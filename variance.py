@@ -10,21 +10,19 @@ print()
 # print(df)
 # Variance calculation
 df["variance"] = df["actual"] - df["budget"]
-df["variance_pct"] = (df["variance"] / df["budget"] * 100).round(2)
+df["variance_pct"] = (df["variance"] / df["budget"] * 100).round(1)
 
 
 #Revenue: Positive varience is good. Opex: negative varience is good. 
 
-df["favorable?"] = np.where(
+df["favorable"] = np.where(
     df["account"] == "Revenue",
     df["variance"] >= 0,
     df["variance"] <=0
 )
+df['flag'] = np.where((df['favorable'] == False) & (df['variance_pct'].abs()>5),
+                      "FLAG", 
+                      ""
+                      )
 
-
-df["region?"] = np.where(
-    df["region"] == "North",
-    df["variance_pct"] <= 0,
-    df['variance_pct'] >= 0
-)
 print(df)
