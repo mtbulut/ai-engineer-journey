@@ -6,7 +6,7 @@ print()
 # Varience calculation below
 # df['variance'] = df['actual'] - df['budget']
 # print(df)
-df['budget*actual^2'] = df['budget'] * df['actual']+df['actual']
-print(df)
-df['varinece_percent'] = df['budget*actual^2']/df['budget']*100
+# Variance calculation
+df["variance"] = df["actual"] - df["budget"]
+df["variance_pct"] = (df["variance"] / df["budget"] * 100).round(2)
 print(df)
