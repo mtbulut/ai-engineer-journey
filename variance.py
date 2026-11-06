@@ -20,7 +20,7 @@ df["favorable"] = np.where(
     df["variance"] >= 0,
     df["variance"] <=0
 )
-df['flag'] = np.where((df['favorable'] == False) & (df['variance_pct'].abs()>5),
+df['flag'] = np.where((~df['favorable'] & (df['variance_pct'].abs()>5)),
                       "FLAG", 
                       ""
                       )
