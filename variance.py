@@ -15,9 +15,16 @@ df["variance_pct"] = (df["variance"] / df["budget"] * 100).round(2)
 
 #Revenue: Positive varience is good. Opex: negative varience is good. 
 
-df["favorable"] = np.where(
+df["favorable?"] = np.where(
     df["account"] == "Revenue",
     df["variance"] >= 0,
     df["variance"] <=0
+)
+
+
+df["region?"] = np.where(
+    df["region"] == "North",
+    df["variance_pct"] <= 0,
+    df['variance_pct'] >= 0
 )
 print(df)
