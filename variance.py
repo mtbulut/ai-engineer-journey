@@ -8,3 +8,5 @@ print()
 # print(df)
 df['budget*actual^2'] = df['budget'] * df['actual']+df['actual']
 print(df)
+df['varinece_percent'] = df['budget*actual^2']/df['budget']*100
+print(df)
