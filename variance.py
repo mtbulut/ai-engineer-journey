@@ -24,8 +24,13 @@ df['flag'] = np.where((~df['favorable'] & (df['variance_pct'].abs()>5)),
                       "FLAG", 
                       ""
                       )
-print(df)
+# print(df)
 # now CFP team 8 satirlik ozeti gormek istediklerini belirttiler ve Soru: Temmuzda North bolgesi toplamda nasillardi?
-summary = df.groupby(['month','region'])[['actual', 'budget','variance']].sum()
+summary = df.groupby(['month','account'])[['actual', 'budget','variance']].sum()
+# print(df)
+# print(summary)
+#  Her group ta kac flag var ona bakilmali.. 
+df['is_flag'] = df['flag'] == 'FLAG'
 print(df)
-print(summary)
+
+# df['Flag_count'] = df.groupby([''])
