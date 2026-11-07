@@ -1,0 +1,9 @@
+month,region,account,actual,budget
+2026-07,North,Revenue,120000,115000
+2026-07,North,Opex,45000,40000
+2026-07,South,Revenue,98000,105000
+2026-07,South,Opex,38000,39000
+2026-08,North,Revenue,125000,118000
+2026-08,North,Opex,47000,41000
+2026-08,South,Revenue,91000,107000
+2026-08,South,Opex,40000,39500
