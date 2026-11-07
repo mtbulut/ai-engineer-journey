@@ -35,3 +35,8 @@ print(df)
 
 Flag_count = df.groupby(['month','region'])[['actual','budget','variance','is_flag']].sum()
 print(Flag_count)
+
+# simdi bunu ekledim. evet simdi bakalim.. 
+# Sonuclari bir soyaya kaydet e geldik
+df.to_csv('varience_report.csv', index=False)
+Flag_count.to_csv('varience_summary.csv')

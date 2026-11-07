@@ -1,0 +1,9 @@
+month,region,account,actual,budget,variance,variance_pct,favorable,flag,is_flag
+2026-07,North,Revenue,120000,115000,5000,4.3,True,,False
+2026-07,North,Opex,45000,40000,5000,12.5,False,FLAG,True
+2026-07,South,Revenue,98000,105000,-7000,-6.7,False,FLAG,True
+2026-07,South,Opex,38000,39000,-1000,-2.6,True,,False
+2026-08,North,Revenue,125000,118000,7000,5.9,True,,False
+2026-08,North,Opex,47000,41000,6000,14.6,False,FLAG,True
+2026-08,South,Revenue,91000,107000,-16000,-15.0,False,FLAG,True
+2026-08,South,Opex,40000,39500,500,1.3,False,,False
