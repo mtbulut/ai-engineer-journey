@@ -36,22 +36,22 @@ print()
 # Adim_2 Bukisimdan basliyor...
 
 # # Sadece Revenue satırları
-# revenue = df[df["account"] == "Revenue"]
+revenue = df[df["account"] == "Revenue"]
 # rev = df[df['account'] == "Revenue"]
 # print(rev)
 
 # Satırlarda bölge, sütunlarda ay
-# pivot = pd.pivot_table(
-#     revenue,
-#     values="actual",       # hangi sayıyı göstereyim?
-#     index="region",        # satırlara ne koyayım?
-#     columns="month",       # sütunlara ne koyayım?
-#     aggfunc="sum",         # nasıl toplayayım?
-#     margins=True,          # toplam satırı ve sütunu ekle
-#     margins_name="Total",
-# )
-# print()
-# print(pivot)
+pivot = pd.pivot_table(
+    revenue,
+    values="actual",       # hangi sayıyı göstereyim?
+    index="region",        # satırlara ne koyayım?
+    columns="month",       # sütunlara ne koyayım?
+    aggfunc="sum",         # nasıl toplayayım?
+    margins=True,          # toplam satırı ve sütunu ekle
+    margins_name="Total"
+)
+print()
+print(pivot)
 
 # ----- Deneme benim icin----
 # pivot = pd.pivot_table()
@@ -59,7 +59,8 @@ print()
 # hesaplama = df[(df["region"] == "North") & (df['actual'] > 100000)]
 # print(hesaplama)
 # print(df[['month', 'account']])
-hesap = df[df['budget'] > 100000]
-print(hesap)
+# hesap = df[df['budget'] > 100000]
+# print(hesap)
 
-print(df.iloc[2])
+# print(df.iloc[2])
+# pivot_1 = pd.pivot_table()
