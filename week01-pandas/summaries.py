@@ -18,19 +18,43 @@ by_account = df.groupby("account").agg(
 print()
 # print(by_account)
 
-without_agg_sum = df.groupby("account")["actual"].sum()
-without_agg_mean = df.groupby("account")["actual"].mean()
-without_agg_max = df.groupby("account")["actual"].max()
-without_agg_count = df.groupby("account")["actual"].count()
-print(without_agg_mean,without_agg_sum)
+# without_agg_sum = df.groupby("account")["actual"].sum()
+# without_agg_mean = df.groupby("account")["actual"].mean()
+# without_agg_max = df.groupby("account")["actual"].max()
+# without_agg_count = df.groupby("account")["actual"].count()
+# print(without_agg_mean,without_agg_sum)
 
-combined = pd.DataFrame({
-    "total_actual": without_agg_sum,
-    "avg_actual" :without_agg_mean,
-    "max_actual" : without_agg_max,
-    "count_actual" : without_agg_count
-})
+# combined = pd.DataFrame({
+#     "total_actual": without_agg_sum,
+#     "avg_actual" :without_agg_mean,
+#     "max_actual" : without_agg_max,
+#     "count_actual" : without_agg_count
+# })
 
-print(combined)
+# print(combined)
 
-combined_2 = pd.DataFrame()
+# Adim_2 Bukisimdan basliyor...
+
+# # Sadece Revenue satırları
+# revenue = df[df["account"] == "Revenue"]
+# rev = df[df['account'] == "Revenue"]
+# print(rev)
+
+# Satırlarda bölge, sütunlarda ay
+# pivot = pd.pivot_table(
+#     revenue,
+#     values="actual",       # hangi sayıyı göstereyim?
+#     index="region",        # satırlara ne koyayım?
+#     columns="month",       # sütunlara ne koyayım?
+#     aggfunc="sum",         # nasıl toplayayım?
+#     margins=True,          # toplam satırı ve sütunu ekle
+#     margins_name="Total",
+# )
+# print()
+# print(pivot)
+
+# ----- Deneme benim icin----
+# pivot = pd.pivot_table()
+# Testing...
+hesaplama = df[df["region"] == "North"]
+print(hesaplama)
