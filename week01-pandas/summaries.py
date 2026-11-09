@@ -56,5 +56,10 @@ print()
 # ----- Deneme benim icin----
 # pivot = pd.pivot_table()
 # Testing...
-hesaplama = df[df["region"] == "North"]
-print(hesaplama)
+# hesaplama = df[(df["region"] == "North") & (df['actual'] > 100000)]
+# print(hesaplama)
+# print(df[['month', 'account']])
+hesap = df[df['budget'] > 100000]
+print(hesap)
+
+print(df.iloc[2])
