@@ -13,7 +13,7 @@ df = pd.read_csv(path)
 #	Soru	İpucu	Kontrol için cevap
 # 1	Bölge bazında toplam actual	groupby + sum	North = 257000
 
-by_region = df.groupby(['region','account']).agg(
+by_region = df.groupby(['region',]).agg(
     total_actual = ('actual', 'sum')
 )
 
