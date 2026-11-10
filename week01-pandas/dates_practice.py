@@ -13,9 +13,12 @@ df['month'] = pd.to_datetime(df['month'])
 print(df)
 
 # 2. Önce bölgeye, sonra aya göre sırala
-df = df.sort_values(["region", "region"])
+df = df.sort_values(["region", "month"])
 print(df)
 
 # 3. YTD: Her bölge için kümülatif toplam
-df["ytd"] = df.groupby("region")[["revenue"]].cumsum()
-print(df.dtypes)
+df["ytd"] = df.groupby("region")["revenue"].cumsum()
+print(df)
+
+# north_march = df.groupby(["month","region"])["revenue"].cumsum()
+# print(north_march)
