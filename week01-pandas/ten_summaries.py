@@ -59,10 +59,14 @@ print(df.groupby('account').agg(
 
 # 9. Opex pivot: regions in rows, months in columns, with totals
 #    Hint: pivot_table              | Check: Opex grand total = 170000
-
-opex = df[df["account"] == "Opex"]
+# aslinda burada filitreleme yapiliyor
+opex = df[df["account"] == "Opex"] 
 print(opex)
-pivot = pd.pivot_table(opex, values='actual',index=)
+pivot = pd.pivot_table(opex, values='actual',index='region',columns='month',aggfunc='sum', margins=True)
+print(pivot)
+print(df)
+
 
 # 10. Pivot with accounts in rows, regions in columns, showing budget
 #     Hint: pivot_table
+print(pd.pivot_table(df, values= 'budget', index='account', columns='region', margins= True))
