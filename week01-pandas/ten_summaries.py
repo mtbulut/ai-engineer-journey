@@ -49,10 +49,11 @@ print(df.groupby('region')[['actual']].mean())
 # 8. Lowest and highest actual by account
 #    Hint: agg                      | Check: Revenue min = 91000
 
-print(df.groupby('account').agg(
+account_by = df.groupby('account').agg(
     lowest_actual = ('actual','min'),
     highest_actual = ('actual','max')
-))
+)
+print(account_by)
 
 
 # print(pd.concat([df.groupby('account')[['actual']].max(), df.groupby('account')[['actual']].min()],ignore_index=True))
@@ -69,4 +70,5 @@ print(df)
 
 # 10. Pivot with accounts in rows, regions in columns, showing budget
 #     Hint: pivot_table
-print(pd.pivot_table(df, values= 'budget', index='account', columns='region', margins= True))
+budget_pivot = pd.pivot_table(df, values= 'budget', index='account', columns='region', margins= True, aggfunc='sum')
+print(budget_pivot)
