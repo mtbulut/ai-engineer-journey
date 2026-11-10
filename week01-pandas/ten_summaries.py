@@ -19,3 +19,17 @@ by_region = df.groupby(['region','account']).agg(
 
 print(by_region)
 print(df)
+
+	# Ay bazında toplam budget	groupby + sum	2026-07 = 299000
+
+by_month = df.groupby('month').agg(
+    total_buget = ("budget", "sum")
+)
+
+print(by_month)
+
+print(df.groupby("month")[['budget']].sum())
+
+# diger yollarin hepsini deniyelim 
+budget_by_month = df.groupby('month')[['budget']].sum()
+print(budget_by_month)
