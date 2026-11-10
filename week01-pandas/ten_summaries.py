@@ -49,10 +49,20 @@ print(df.groupby('region')[['actual']].mean())
 # 8. Lowest and highest actual by account
 #    Hint: agg                      | Check: Revenue min = 91000
 
+print(df.groupby('account').agg(
+    lowest_actual = ('actual','min'),
+    highest_actual = ('actual','max')
+))
 
+
+# print(pd.concat([df.groupby('account')[['actual']].max(), df.groupby('account')[['actual']].min()],ignore_index=True))
 
 # 9. Opex pivot: regions in rows, months in columns, with totals
 #    Hint: pivot_table              | Check: Opex grand total = 170000
+
+opex = df[df["account"] == "Opex"]
+print(opex)
+pivot = pd.pivot_table(opex, values='actual',index=)
 
 # 10. Pivot with accounts in rows, regions in columns, showing budget
 #     Hint: pivot_table
