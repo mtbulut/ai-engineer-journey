@@ -33,3 +33,26 @@ print(df.groupby("month")[['budget']].sum())
 # diger yollarin hepsini deniyelim 
 budget_by_month = df.groupby('month')[['budget']].sum()
 print(budget_by_month)
+# print(df)
+
+print(df.groupby('account')[['actual','budget']].sum())
+#4. Only the Opex row
+print(df[df['account'] == "Opex"])
+#5. Rows where actual is greater than 100000
+print(df[df['actual'] > 100000])
+# 6. Revenue for the south region only
+print(df[(df['region'] == 'South') & (df['account'] == 'Revenue')] )
+
+# 7. Average actual by region by data Frame seklinde yazmis oldum
+print(df.groupby('region')[['actual']].mean())
+
+# 8. Lowest and highest actual by account
+#    Hint: agg                      | Check: Revenue min = 91000
+
+
+
+# 9. Opex pivot: regions in rows, months in columns, with totals
+#    Hint: pivot_table              | Check: Opex grand total = 170000
+
+# 10. Pivot with accounts in rows, regions in columns, showing budget
+#     Hint: pivot_table
