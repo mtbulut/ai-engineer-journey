@@ -46,3 +46,8 @@ print(df)
 print("Toplam actual:", df["actual"].sum())
 
 print("toplam Actual", df["actual"].sum())
+
+print("Once satir sayisi:", len(df))
+df = df.drop_duplicates()
+print("Sonra satir sayisi:", len(df))
+print("Actual Toplam:", df['actual'].sum())

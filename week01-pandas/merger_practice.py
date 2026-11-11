@@ -20,3 +20,4 @@ merged_data = merged_data.fillna(0)
 merged_data['variance'] = merged_data['actual'] - merged_data['budget']
 # merged_data =abs(merged_data)
 print(merged_data)
+
