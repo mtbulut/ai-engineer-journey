@@ -45,4 +45,10 @@ df = df.drop_duplicates()
 print("Sonra satır sayısı:", len(df))
 print("Toplam actual:", df["actual"].sum())
 
-testing.. testin... 
+2. notes.md’ye bugün öğrendiklerini ekle, örneğin:
+
+Veri kontrol rutini (5 soru)
+str.strip(), str.title(), str.replace(), pd.to_numeric(errors="coerce")
+drop_duplicates() ve dropna(subset=...)
+“Eksik veriyi sessizce silme ya da 0 yapma; görünür kıl”
+git add . bulunduğun klasöre göre çalışır

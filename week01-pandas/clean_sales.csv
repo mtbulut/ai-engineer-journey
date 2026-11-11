@@ -1,0 +1,10 @@
+month,region,account,actual,data_status
+2026-01,North,Revenue,100000.0,OK
+2026-01,South,Revenue,90000.0,OK
+2026-02,North,Revenue,110000.0,OK
+2026-02,South,Revenue,95000.0,OK
+2026-03,North,Revenue,,MISSING
+2026-03,South,Revenue,92000.0,OK
+2026-04,North,Revenue,120000.0,OK
+2026-04,South,Revenue,,MISSING
+2026-05,North,Revenue,125000.0,OK
