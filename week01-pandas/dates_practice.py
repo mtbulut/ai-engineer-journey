@@ -22,3 +22,9 @@ print(df)
 
 # north_march = df.groupby(["month","region"])["revenue"].cumsum()
 # print(north_march)
+
+# 4. MoM: Geçen aya göre değişim (tutar)
+df["mom_change"] = df.groupby("region")["revenue"].diff()
+
+# 5. MoM: Geçen aya göre değişim (%)
+df["mom_pct"] = (df.groupby("region")["revenue"].pct_change() * 100).round(1)
