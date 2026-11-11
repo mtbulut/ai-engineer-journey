@@ -28,3 +28,5 @@ df["mom_change"] = df.groupby("region")["revenue"].diff()
 
 # 5. MoM: Geçen aya göre değişim (%)
 df["mom_pct"] = (df.groupby("region")["revenue"].pct_change() * 100).round(1)
+
+print(df)
