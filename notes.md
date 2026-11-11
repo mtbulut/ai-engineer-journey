@@ -45,4 +45,4 @@ df = df.drop_duplicates()
 print("Sonra satır sayısı:", len(df))
 print("Toplam actual:", df["actual"].sum())
 
-testing.. 
+testing.. testin... 
