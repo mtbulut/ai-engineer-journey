@@ -50,4 +50,15 @@ print("toplam Actual", df["actual"].sum())
 print("Once satir sayisi:", len(df))
 df = df.drop_duplicates()
 print("Sonra satir sayisi:", len(df))
-print("Actual Toplam:", df['actual'].sum())
+print("Actual Toplam(iki kayit eksik):", df['actual'].sum())
+
+# df['actual'] = df['actual']..replace(",","")
+
+print(df)
+
+# Eksik olanları işaretle, silme
+df["data_status"] = df["actual"].isna().map({True: "MISSING", False: "OK"})
+
+print(df)
+print("Toplam actual (eksikler hariç):", df["actual"].sum())
+print("Eksik kayıt sayısı:", (df["data_status"] == "MISSING").sum())
