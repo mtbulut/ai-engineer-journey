@@ -95,20 +95,40 @@ WHERE actual < budget
 # 4. Total actual by month
 #    Check: 2026-07 = 301000, 2026-08 = 303000
 
-
+query = """
+SELECT region, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
+FROM actuals_budget
+GROUP BY month
+"""
 
 # 5. Total budget by region
 #    Check: North = 314000, South = 290500
-
+query = """
+SELECT region, SUM(budget) AS tl_budget
+FROM actuals_budget
+GROUP BY region
+"""
 # 6. Average actual by account
 #    Check: Revenue = 108500, Opex = 42500
-
+query = """
+SELECT region, AVG(actual) AS tl_budget
+FROM actuals_budget
+GROUP BY account
+"""
 # 7. All rows sorted by actual, highest first
 #    Hint: ORDER BY ... DESC   | Check: first row = 125000
-
+query = """
+SELECT *
+FROM actuals_budget
+ORDER BY actual DESC
+"""
 # 8. Variance (actual - budget) by month AND region
 #    Hint: GROUP BY month, region   | Check: 2026-08 South = -15500
-
+query = """
+SELECT region, month, SUM(actual-budget) AS Variance
+FROM actuals_budget
+GROUP BY region, month
+"""
 # 9. Revenue only: total actual and total budget by region
 #    Hint: WHERE + GROUP BY   | Check: South actual = 189000, budget = 212000
 
