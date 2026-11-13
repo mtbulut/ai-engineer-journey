@@ -20,3 +20,6 @@ df.to_sql("actuals_budget", conn, if_exists="replace", index= False)
 query = "SELECT * FROM actuals_budget WHERE region = 'North'"
 result = pd.read_sql_query(query, conn)
 print(result)
+
+#5 baglatiyi kapat 
+conn.close()
