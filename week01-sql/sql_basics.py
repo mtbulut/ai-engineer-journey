@@ -125,13 +125,20 @@ ORDER BY actual DESC
 # 8. Variance (actual - budget) by month AND region
 #    Hint: GROUP BY month, region   | Check: 2026-08 South = -15500
 query = """
-SELECT region, month, SUM(actual-budget) AS Variance
+SELECT region, month, SUM(actual)- SUM(budget) AS Variance
 FROM actuals_budget
 GROUP BY region, month
 """
 # 9. Revenue only: total actual and total budget by region
 #    Hint: WHERE + GROUP BY   | Check: South actual = 189000, budget = 212000
-
+query = """
+SELECT region, 
+SUM(actual) AS Total_actual,
+SUM(budget) AS Total_budget
+FROM actuals_budget
+WHERE account = 'Revenue'
+GROUP BY region
+"""
 # 10. Rows with negative variance, worst first
 #     Hint: WHERE actual - budget < 0, then ORDER BY   | Check: 3 rows, first = -16000
 
