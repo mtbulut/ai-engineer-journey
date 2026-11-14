@@ -89,14 +89,14 @@ WHERE budget > 100000
 query = """ 
 SELECT * 
 FROM actuals_budget
-WHERE actual < budget
+WHERE region = 'South' AND actual < budget
 
 """
 # 4. Total actual by month
 #    Check: 2026-07 = 301000, 2026-08 = 303000
 
 query = """
-SELECT region, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
+SELECT month, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY month
 """
@@ -111,7 +111,8 @@ GROUP BY region
 # 6. Average actual by account
 #    Check: Revenue = 108500, Opex = 42500
 query = """
-SELECT region, AVG(actual) AS tl_budget
+SELECT account, 
+AVG(actual) AS avg_actual
 FROM actuals_budget
 GROUP BY account
 """
@@ -141,7 +142,27 @@ GROUP BY region
 """
 # 10. Rows with negative variance, worst first
 #     Hint: WHERE actual - budget < 0, then ORDER BY   | Check: 3 rows, first = -16000
+query = """
+SELECT account, region, 
+actual - budget AS Neg_Variance 
+FROM actuals_budget
+WHERE actual - budget < 0 
+ORDER BY  Neg_Variance ASC
+"""
 
+# denemeler 
+query = """
+SELECT month, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
+FROM actuals_budget
+GROUP BY month
+"""
+
+query = """
+SELECT account, 
+AVG(actual) AS avg_actual
+FROM actuals_budget
+GROUP BY account
+"""
 result = pd.read_sql_query(query, conn)
 print(result)
 conn.close()
