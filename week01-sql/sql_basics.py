@@ -26,14 +26,24 @@ conn.close()
 print()
 
 conn = sqlite3.connect(BASE_DIR/"week01-sql"/"finance.db")
-# query = "SELECT * FROM actuals_budget"
-# result = pd.read_sql_query(query, conn)
+
+def run(sql):
+    print(pd.read_sql_query(sql, conn))
+    print()
+query = "SELECT * FROM actuals_budget"
+result = pd.read_sql_query(query, conn)
 # print(result)
+
+run( """
+SELECT month, region, actual,budget, actual, actual, actual, actual
+FROM actuals_budget
+""")
 
 query = """
 SELECT month, region, actual,budget, actual, actual
 FROM actuals_budget
 """
+
 query = """
 SELECT *
 FROM actuals_budget
