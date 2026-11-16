@@ -179,9 +179,35 @@ GROUP BY account
 result = pd.read_sql_query(query, conn)
 # print(result)
 conn.close()
-actual = 23044
-budget = 22044
+# ============================================
 def variance(actual, budget):
     result1 = actual - budget
     return result1 
-print('Variance sonuc:', variance(120000,115000))
+print(variance(120000,115000))
+
+# ===============================================
+
+def carpim_toplam(x, y):
+    sonuc = 2*x + y 
+    return sonuc
+print("ikinci sonuc", carpim_toplam(10, 40))
+
+def a(x):
+    print(x * 2)
+
+def b(x):
+ return x * 2 
+
+a(111)
+variance(22, 33)
+
+# ==================
+def b(x):
+  print("sonuc bu bence:", x * 2 )
+
+b(77)
+
+# =========================
+def is_flag(variance_pct, threshold = 5):
+   return abs(variance_pct) > threshold
+is_flag(12.5)
