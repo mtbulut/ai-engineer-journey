@@ -113,7 +113,7 @@ GROUP BY month
 
 # 5. Total budget by region
 #    Check: North = 314000, South = 290500
-run("""
+num_5 = run("""
 SELECT region, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY region
@@ -173,6 +173,9 @@ AVG(actual) AS avg_actual
 FROM actuals_budget
 GROUP BY account
 """)
+
+
+
 result = pd.read_sql_query(query, conn)
-print(result)
+# print(result)
 conn.close()
