@@ -179,3 +179,9 @@ GROUP BY account
 result = pd.read_sql_query(query, conn)
 # print(result)
 conn.close()
+actual = 23044
+budget = 22044
+def variance(actual, budget):
+    result1 = actual - budget
+    return result1 
+print('Variance sonuc:', variance(120000,115000))

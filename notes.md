@@ -52,3 +52,7 @@ str.strip(), str.title(), str.replace(), pd.to_numeric(errors="coerce")
 drop_duplicates() ve dropna(subset=...)
 “Eksik veriyi sessizce silme ya da 0 yapma; görünür kıl”
 git add . bulunduğun klasöre göre çalışır
+
+Function defination=================
+![
+](image.png)
