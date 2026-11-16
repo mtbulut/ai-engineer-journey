@@ -106,18 +106,18 @@ WHERE region = 'South' AND actual < budget
 #    Check: 2026-07 = 301000, 2026-08 = 303000
 
 run("""
-SELECT month, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
+SELECT month, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY month
 """)
 
 # 5. Total budget by region
 #    Check: North = 314000, South = 290500
-query = """
+run("""
 SELECT region, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY region
-"""
+""")
 # 6. Average actual by account
 #    Check: Revenue = 108500, Opex = 42500
 run("""
