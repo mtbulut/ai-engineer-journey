@@ -26,9 +26,16 @@ def check_data(df):
     print("--- 4. Tekrarlanan Satir ---")
     print(df.duplicated().sum())
 
-def check_data(df):
+def check_data2(df):
     print('--- 5. Metin sutunlarindaki farkli degerler ---')
-    for col in df.select_dtypes(include=["object", "string"]).columns:
-        print(col, ":", df[col].unique())
+    for col in df.select_dtypes(include=["object","string"]).columns:
+        print(col, df[col].unique())
     
-check_data(df)
+
+print("========== messy_sales.csv ==========")
+check_data2(pd.read_csv(BASE_DIR / "messy_sales.csv"))
+
+check_data2(df)
+dff = pd.read_csv(BASE_DIR / "messy_sales.csv")
+print(dff)
+                  
