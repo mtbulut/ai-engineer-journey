@@ -39,35 +39,35 @@ SELECT month, region, actual,budget, actual, actual, actual, actual
 FROM actuals_budget
 """)
 
-query = """
+run( """
 SELECT month, region, actual,budget, actual, actual
 FROM actuals_budget
-"""
+""")
 
-query = """
+run( """
 SELECT *
 FROM actuals_budget
 WHERE region = 'North' AND account = 'Revenue'
-"""
+""")
 
-query = """
+run("""
 SELECT month, region, account, actual
 FROM actuals_budget
 WHERE actual > 100000
-"""
+""")
 
-query = """
+run("""
 SELECT month, region, account, actual, budget,
        actual - budget AS variance
 FROM actuals_budget
-"""
-query = """
+""")
+run("""
 SELECT region,AVG(budget) AS avg_budget, SUM(actual) AS total_actual
 FROM actuals_budget
 GROUP BY region
-"""
+""")
 
-query = """
+run("""
 SELECT account,
        SUM(actual) AS total_actual,
        SUM(budget) AS total_budget,
@@ -75,41 +75,41 @@ SELECT account,
        COUNT(*) AS row_count
 FROM actuals_budget
 GROUP BY account
-"""
-query = """
+""")
+run("""
 SELECT * FROM actuals_budget
-"""
+""")
 # 1. All Opex rows
 #    Check: 4 rows
-query = """
+run("""
 SELECT *
 FROM actuals_budget
 WHERE account = 'Opex'
-"""
+""")
 # 2. Rows where budget is greater than 100000
 #    Check: 4 rows
 
-query = """
+run( """
 SELECT *
 FROM actuals_budget
 WHERE budget > 100000
-"""
+""")
 # 3. South rows where actual is less than budget
 #    Hint: WHERE ... AND ...   | Check: 3 rows
-query = """ 
+run(""" 
 SELECT * 
 FROM actuals_budget
 WHERE region = 'South' AND actual < budget
 
-"""
+""")
 # 4. Total actual by month
 #    Check: 2026-07 = 301000, 2026-08 = 303000
 
-query = """
+run("""
 SELECT month, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY month
-"""
+""")
 
 # 5. Total budget by region
 #    Check: North = 314000, South = 290500
@@ -120,59 +120,59 @@ GROUP BY region
 """
 # 6. Average actual by account
 #    Check: Revenue = 108500, Opex = 42500
-query = """
+run("""
 SELECT account, 
 AVG(actual) AS avg_actual
 FROM actuals_budget
 GROUP BY account
-"""
+""")
 # 7. All rows sorted by actual, highest first
 #    Hint: ORDER BY ... DESC   | Check: first row = 125000
-query = """
+run("""
 SELECT *
 FROM actuals_budget
 ORDER BY actual DESC
-"""
+""")
 # 8. Variance (actual - budget) by month AND region
 #    Hint: GROUP BY month, region   | Check: 2026-08 South = -15500
-query = """
+run("""
 SELECT region, month, SUM(actual)- SUM(budget) AS Variance
 FROM actuals_budget
 GROUP BY region, month
-"""
+""")
 # 9. Revenue only: total actual and total budget by region
 #    Hint: WHERE + GROUP BY   | Check: South actual = 189000, budget = 212000
-query = """
+run("""
 SELECT region, 
 SUM(actual) AS Total_actual,
 SUM(budget) AS Total_budget
 FROM actuals_budget
 WHERE account = 'Revenue'
 GROUP BY region
-"""
+""")
 # 10. Rows with negative variance, worst first
 #     Hint: WHERE actual - budget < 0, then ORDER BY   | Check: 3 rows, first = -16000
-query = """
+run("""
 SELECT account, region, 
 actual - budget AS Neg_Variance 
 FROM actuals_budget
 WHERE actual - budget < 0 
 ORDER BY  Neg_Variance ASC
-"""
+""")
 
 # denemeler 
-query = """
+run("""
 SELECT month, account, SUM(actual) AS tl_actual, SUM(budget) AS tl_budget
 FROM actuals_budget
 GROUP BY month
-"""
+""")
 
-query = """
+run("""
 SELECT account, 
 AVG(actual) AS avg_actual
 FROM actuals_budget
 GROUP BY account
-"""
+""")
 result = pd.read_sql_query(query, conn)
 print(result)
 conn.close()
