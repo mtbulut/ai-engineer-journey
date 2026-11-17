@@ -1,0 +1,11 @@
+month,region,account,actual
+2026-01,North,Revenue,100000
+2026-01,South,Revenue,90000
+2026-01,North,Revenue,100000
+2026-02, north,Revenue,110000
+2026-02,SOUTH,Revenue,95000
+2026-03,North,Revenue,
+2026-03,South,Revenue,"92,000"
+2026-04,North,revenue,120000
+2026-04,South,Revenue,n/a
+2026-05,North,Revenue,125000

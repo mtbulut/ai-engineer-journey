@@ -3,15 +3,22 @@ import numpy as np
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
-df = pd.read_csv(BASE_DIR / "actuals_budget.csv")
-print(df)
+THRESHOLD_PCT = 5
 print()
+def load_data(filename):
+    return pd.read_csv(BASE_DIR/filename)
+
+df = load_data("actuals_budget.csv")
+print(df)
+
+df2 = load_data("messy_sales.csv")
+print(df2)
 
 df["variance"] = df["actual"] - df["budget"]
 df["variance_pct"] = (df["variance"] / df["budget"] * 100).round(1)
 
 
-#Revenue: Positive varience is good. Opex: negative varience is good. 
+#Revenue: Positive variance is good. Opex: negative variance is good. 
 
 df["favorable"] = np.where(
     df["account"] == "Revenue",
