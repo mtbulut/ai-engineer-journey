@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
+
 BASE_DIR = Path(__file__).parent
 THRESHOLD_PCT = 5
 
@@ -32,7 +35,7 @@ def add_favorable(df):
 df = add_favorable(df)
 print(df)
 
-print("------- check below 1----------")
+
 def add_flag(df):
 
     df['flag'] = np.where((~df['favorable'] & (df['variance_pct'].abs()>5)),
@@ -44,18 +47,26 @@ def add_flag(df):
 
 df = add_flag(df)
 print(df)
-print(" === 1_check the answer_1 =======")
+
 
 # now CFP team 8 satirlik ozeti gormek istediklerini belirttiler ve Soru: Temmuzda North bolgesi toplamda nasillardi?
 
-#  Her group ta kac flag var ona bakilmali.. 
-df['is_flag'] = df['flag'] == 'FLAG'
+#  Her group ta kac flag var ona bakilmali..
+# 
+def is_flag(df): 
+    df['is_flag'] = df['flag'] == 'FLAG'
+    return df
+df = is_flag(df)
 print(df)
+print(" === 33333331_check the answer_1 =======")
 
-flag_count = df.groupby(['month','region'])[['actual','budget','variance','is_flag']].sum()
-print(flag_count)
-
+def summrize(df):
+    summary = df.groupby(['month','region'])[['actual','budget','variance','is_flag']].sum()
+    return summary
+summary = summrize(df)
+print(summary)
+print(" === 1_check the answer_1 =======")
 # simdi bunu ekledim. evet simdi bakalim.. 
 # Sonuclari bir soyaya kaydet e geldik
 df.to_csv(BASE_DIR /'variance_report.csv')
-flag_count.to_csv(BASE_DIR / 'variance_summary.csv')
+df.to_csv(BASE_DIR / 'variance_summary.csv')
