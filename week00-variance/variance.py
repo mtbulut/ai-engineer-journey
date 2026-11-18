@@ -53,20 +53,20 @@ print(df)
 
 #  Her group ta kac flag var ona bakilmali..
 # 
-def is_flag(df): 
+def add_is_flag(df): 
     df['is_flag'] = df['flag'] == 'FLAG'
     return df
-df = is_flag(df)
+df = add_is_flag(df)
 print(df)
 print(" === 33333331_check the answer_1 =======")
 
-def summrize(df):
+def summarize(df):
     summary = df.groupby(['month','region'])[['actual','budget','variance','is_flag']].sum()
     return summary
-summary = summrize(df)
+summary = summarize(df)
 print(summary)
 print(" === 1_check the answer_1 =======")
 # simdi bunu ekledim. evet simdi bakalim.. 
 # Sonuclari bir soyaya kaydet e geldik
-df.to_csv(BASE_DIR /'variance_report.csv')
-df.to_csv(BASE_DIR / 'variance_summary.csv')
+df.to_csv(BASE_DIR /'variance_report.csv', index=False)
+summary.to_csv(BASE_DIR / 'variance_summary.csv')
